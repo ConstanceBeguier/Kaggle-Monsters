@@ -11,14 +11,15 @@ import seaborn as sns
 #########################################################
 TRAIN_DF = pd.read_csv('data/train.csv', header=0)
 COLUMNS_WO_TYPE = ['bone_length', 'rotting_flesh', 'hair_length', 'has_soul']
-COLUMNS_WITH_TYPE = ['bone_length', 'rotting_flesh', 'hair_length', 'has_soul', 'type']
+COLUMNS_WITH_TYPE = ['bone_length', 'rotting_flesh', 'hair_length',
+                     'has_soul', 'type']
 
 #########################################################
 # General information on columns                        #
 #########################################################
 
 def general_info(data_df):
-    """ Print general information on the database 
+    """ Print general information on the database
     - type of columns and number of non-null elements
     - basic statistics on numerical columns (global and per monster type)  """
     # Print for each column the type and the number of non-null element
@@ -79,7 +80,8 @@ def save_one_bloxplot(data_df, cols):
 def save_pairplot(data_df, cols):
     """ Create a pairplot with all numerical columns """
     plt.clf()
-    sns.pairplot(data_df, vars=cols, kind='scatter', diag_kind='kde', hue="type")
+    sns.pairplot(data_df, vars=cols, kind='scatter', diag_kind='kde',
+                 hue="type")
     plt.savefig("Graphs/pairplot.png")
 
 # save_pairplot(TRAIN_DF, COLUMNS_WO_TYPE)
@@ -101,7 +103,8 @@ def save_scatter_two_cols(data_df, col1, col2, labels):
 #########################################################
 
 def add_color_int_col(data_df):
-    """ Create a new column into the database where colors are replaced by intergers """
+    """ Create a new column into the database where colors are
+    replaced by intergers """
     print "##### List of colors #####"
     print data_df['color'].unique()
     print
